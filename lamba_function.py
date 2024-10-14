@@ -2,8 +2,8 @@ import json
 
 def lambda_handler(event, context):
     # Ottieni lo stato attuale e l'evento dall'input
-    current_state = event.get('state', 'in_stazione')  # Stato iniziale di default è "in_stazione"
-    input_event = event.get('event', None)
+    current_state = event["queryStringParameters"]["current_state"]
+    input_event = event["queryStringParameters"]["input_event"]
 
     # Gestione degli stati
     if current_state == 'in_stazione':
