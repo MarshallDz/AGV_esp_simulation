@@ -4,7 +4,7 @@
 
 const char* ssid = ""; //SSID del wifi
 const char* password = ""; //Password del wifi 
-const char* apiEndpoint = "https://2dnk3lbt44.execute-api.eu-north-1.amazonaws.com/test/my-resource";
+const char* apiEndpoint = ""; //inserire l'endpoint AWS
 
 const int ledPin1 = 17;  // LED 1: in stazione/navigazione
 const int ledPin2 = 5;   // LED 2: attesa carico
