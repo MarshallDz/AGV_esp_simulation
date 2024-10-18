@@ -2,8 +2,8 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 
-const char* ssid = "TIM-54868084";
-const char* password = "6yCcNdH3cCSNkFf3TF2QzzPz";
+const char* ssid = ""; //SSID del wifi
+const char* password = ""; //Password del wifi 
 const char* apiEndpoint = "https://2dnk3lbt44.execute-api.eu-north-1.amazonaws.com/test/my-resource";
 
 const int ledPin1 = 17;  // LED 1: in stazione/navigazione
