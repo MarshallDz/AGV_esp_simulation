@@ -7,7 +7,7 @@ def lambda_handler(event, context):
 
     # Gestione degli stati
     if current_state == 'in_stazione':
-        if input_event == 'start_navigation':
+        if input_event == 'azione':
             new_state = 'navigazione'
             message = "Navigazione iniziata"
         else:
@@ -15,34 +15,39 @@ def lambda_handler(event, context):
             message = "In stazione, in attesa di comando"
 
     elif current_state == 'navigazione':
-        if input_event == 'reach_load_station':
-            new_state = 'carico'
-            message = "Inizio carico"
-        elif input_event == 'reach_unload_station':
-            new_state = 'scarico'
-            message = "Inizio scarico"
+        if input_event == 'azione':
+            new_state = 'attesa_carico'
+            message = "In attesa del carico"
         else:
             new_state = 'navigazione'
-            message = "Navigazione in corso"
+            message = "In navigazione, in attesa di comando"
 
-    elif current_state == 'carico':
-        if input_event == 'load_complete':
-            new_state = 'navigazione'
-            message = "Carico completato, navigazione verso stazione di scarico"
+    elif current_state == 'attesa_carico':
+        if input_event == 'pot_up':
+            new_state = 'caricato'
+            message = "Carico completato"
         else:
-            new_state = 'carico'
-            message = "In carico"
+            new_state = 'attesa_carico'
+            message = "In carico, in attesa di comando"
 
-    elif current_state == 'scarico':
-        if input_event == 'unload_complete':
+    elif current_state == 'caricato':
+        if input_event == 'azione':
+            new_state = 'attesa_scarico'
+            message = "In attesa dello scarico"
+        else:
+            new_state = 'caricato'
+            message = "Caricato, in attesa di comando"
+
+    elif current_state == 'attesa_scarico':
+        if input_event == 'pot_down':
             new_state = 'in_stazione'
-            message = "Scarico completato, tornato in stazione"
+            message = "Scarico completato, in ritorno alla stazione"
         else:
-            new_state = 'scarico'
-            message = "In scarico"
+            new_state = 'attesa_scarico'
+            message = "In attesa scarico"
 
     elif current_state == 'emergenza':
-        if input_event == 'resolve_emergency':
+        if input_event == 'azione':
             new_state = 'in_stazione'
             message = "Emergenza risolta, tornato in stazione"
         else:
@@ -50,7 +55,7 @@ def lambda_handler(event, context):
             message = "In emergenza, in attesa di risoluzione"
 
     # Gestione dell'evento di emergenza in qualsiasi stato
-    if input_event == 'emergency':
+    if input_event == 'emergenza':
         new_state = 'emergenza'
         message = "Entrato in stato di emergenza"
 
