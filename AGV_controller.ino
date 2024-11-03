@@ -103,7 +103,6 @@ void loop() {
     digitalWrite(ledPin1, LOW);
 
     int potValue = analogRead(potenziometro);
-    Serial.println(potValue);
     if (potValue >= threshold) {
       Serial.println("Transizione a 'caricato'");
       response = sendEventToAPIGateway(previousState, "pot_up");
