@@ -2,21 +2,25 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 
-const char* ssid = ""; //SSID del wifi
-const char* password = ""; //Password del wifi 
-const char* apiEndpoint = ""; //inserire l'endpoint AWS
+const char* ssid = "TIM-54868084";
+const char* password = "6yCcNdH3cCSNkFf3TF2QzzPz";
+const char* apiEndpoint = "https://2dnk3lbt44.execute-api.eu-north-1.amazonaws.com/test/my-resource";
 
 const int ledPin1 = 17;  // LED 1: in stazione/navigazione
 const int ledPin2 = 5;   // LED 2: attesa carico
 const int ledPin3 = 18;  // LED 3: attesa scarico
 const int ledPin4 = 19;  // LED 4: emergenza
 const int pulsante1 = 4;  // Pulsante 1: gestisce la logica del sistema
-const int pulsante2 = 16;   // Pulsante 2: emergenza
+const int pulsante2 = 16; // Pulsante 2: emergenza
 const int potenziometro = 34;  // Pin del potenziometro
 const int threshold = 4000;    // Valore massimo del potenziometro
 
 DynamicJsonDocument doc(1024);
 char previousState[32] = "in_stazione";  // Stato iniziale
+
+unsigned long previousMillis = 0;
+unsigned long ledBlinkInterval = 500;  // Intervallo di lampeggio (500 ms)
+bool ledState = LOW;
 
 void setup() {
   pinMode(ledPin1, OUTPUT);
@@ -41,7 +45,9 @@ void setup() {
 void loop() {
   String response = "";
   const char* newState = "";
-  
+
+  unsigned long currentMillis = millis();
+
   // Stato "in_stazione" - LED 1 acceso
   if (strcmp(previousState, "in_stazione") == 0) {
     digitalWrite(ledPin1, HIGH);
@@ -56,7 +62,6 @@ void loop() {
     strcpy(previousState, "emergenza");
     digitalWrite(ledPin4, HIGH);  // Accendi il LED 4
     sendEventToAPIGateway("in_stazione", "emergenza");
-    delay(1000);  // Evita rimbalzi
   }
 
   // Stato "emergenza" - LED 4 acceso
@@ -83,7 +88,7 @@ void loop() {
 
   // Stato "navigazione" con LED 1 lampeggiante
   if (strcmp(previousState, "navigazione") == 0) {
-    blinkLed(ledPin1);
+    blinkLed(ledPin1, currentMillis);
 
     if (digitalRead(pulsante1) == 1) {
       Serial.println("Transizione a 'attesa_carico'");
@@ -94,7 +99,7 @@ void loop() {
 
   // Stato "attesa_carico" - LED 2 lampeggiante
   if (strcmp(previousState, "attesa_carico") == 0) {
-    blinkLed(ledPin2);
+    blinkLed(ledPin2, currentMillis);
     digitalWrite(ledPin1, LOW);
 
     int potValue = analogRead(potenziometro);
@@ -176,9 +181,10 @@ String sendEventToAPIGateway(const char* currentState, const char* inputEvent) {
   return response;
 }
 
-void blinkLed(int pin) {
-  digitalWrite(pin, HIGH);
-  delay(500);
-  digitalWrite(pin, LOW);
-  delay(500);
+void blinkLed(int pin, unsigned long currentMillis) {
+  if (currentMillis - previousMillis >= ledBlinkInterval) {
+    previousMillis = currentMillis;
+    ledState = !ledState;
+    digitalWrite(pin, ledState);
+  }
 }
