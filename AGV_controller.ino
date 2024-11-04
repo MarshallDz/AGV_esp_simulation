@@ -2,9 +2,9 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 
-const char* ssid = "TIM-54868084";
-const char* password = "6yCcNdH3cCSNkFf3TF2QzzPz";
-const char* apiEndpoint = "https://2dnk3lbt44.execute-api.eu-north-1.amazonaws.com/test/my-resource";
+const char* ssid = "";
+const char* password = "";
+const char* apiEndpoint = "";
 
 const int ledPin1 = 17;  // LED 1: in stazione/navigazione
 const int ledPin2 = 5;   // LED 2: attesa carico
