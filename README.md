@@ -19,7 +19,7 @@ Hardware necessario:
 
 Software necessario: Arduino Ide, account AWS
 
-Per poter replicare il progetto consigliamo per prima cosa di scaricare il file ZIP del progetto da Github e di estrarlo nel proprio computer. 
+Per poter replicare il progetto consigliamo per prima cosa di scaricare il file ZIP del progetto da Github e di estrarlo nel proprio computer, inoltre dato che il microcontrollore dovrà essere connesso al wifi, di munirsi dell'SSID e della password della connessione wifi con cui si è collegato il proprio computer. 
 
 # Setup Arduino 
 
@@ -28,6 +28,11 @@ Per poter replicare il progetto consigliamo per prima cosa di scaricare il file 
  3. Installare la libreria ArduinoJson di Benoit Blanchon dal Gestore Librerie di Arduino IDE
  4. Nelle preferenze di Arduino IDE, aggiungere l'url aggiuntivo per il Gestore schede
  5. Creare uno sketch e incollare il codice contenuto nel file AGV_controller.ino contenuto nella cartella scaricata
+ Nota: nel codice vanno inserire di propria mano alcuni dati come SSID e password della connessione wifi, indirizzo url delle due funzioni Lambda
+  const char* ssid = "";
+  const char* password = "";
+  const char* apiEndpoint = "";
+  const char* s3apiEndpoint = "";
 
 # Setup microcontrollore 
 ![375969740-ea3fd435-23ee-45e7-9d42-1200cbc30260](https://github.com/user-attachments/assets/8cf474dd-3840-4e54-8dcf-3dbbe93d3e4f)
