@@ -28,7 +28,7 @@ Per poter replicare il progetto consigliamo per prima cosa di scaricare il file 
  3. Installare la libreria ArduinoJson di Benoit Blanchon dal Gestore Librerie di Arduino IDE
  4. Nelle preferenze di Arduino IDE, aggiungere l'url aggiuntivo per il Gestore schede
  5. Creare uno sketch e incollare il codice contenuto nel file AGV_controller.ino contenuto nella cartella scaricata  
- Nota: nel codice vanno inserire di propria mano alcuni dati come SSID e password della connessione wifi, indirizzo url delle due funzioni Lambda
+Nota: nel codice vanno inseriti di propria mano alcuni dati come SSID e password della connessione wifi, indirizzo url delle due funzioni Lambda
 ```
   const char* ssid = "";  
   const char* password = "";  
