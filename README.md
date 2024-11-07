@@ -2,6 +2,7 @@
 Repository per progetto esame corso ARCHITETTURE DEI CALCOLATORI E CLOUD COMPUTING
 
 Per la descrizione del progetto riferirsi alla [wiki](https://github.com/MarshallDz/AGV_esp_simulation/wiki) di Github! 
+Nella wiki riportiamo i passaggi per replicare il progetto in modo più dettagliato.
 
 # Replicare il progetto
 
@@ -29,7 +30,8 @@ Per poter replicare il progetto consigliamo per prima cosa di scaricare il file 
  5. Creare uno sketch e incollare il codice contenuto nel file AGV_controller.ino contenuto nella cartella scaricata
 
 # Setup microcontrollore 
-immagine circuito
+![375969740-ea3fd435-23ee-45e7-9d42-1200cbc30260](https://github.com/user-attachments/assets/8cf474dd-3840-4e54-8dcf-3dbbe93d3e4f)
+
 
 # Setup AWS
 In AWS andremo ad utilizzare: AWS Lambda, AWS S3, AWS Api Gateway
