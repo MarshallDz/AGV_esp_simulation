@@ -64,23 +64,26 @@ Proseguire ora con la creazione di un endpoint
 
 [](https://github.com/MarshallDz/AGV_esp_simulation/wiki/Impostare-l'ambiente-cloud-su-AWS#aws-api-gateway)
 
+Andremo ora a creare un API Gateway che utilizzeremo per entrambe le funzioni Lambda. Per far ciò andremo a creare due route e le assegneremo alle funzioni. 
 1.  Digitare `API Gateway` nella barra di ricerca in alto a sinistra.
-2.  Entrare nella console di AWS API Gateway, cliccare su `Crea API`.
-3.  Scegliere `API REST` e cliccare `Crea`.
-4.  Su `Dettagli API` scegliere `Nuova API`.
-5.  Scegliere un nome per l'API. (ex: `MyApi`)
-6.  Lasciare il tipo di endpoint in `Regionale` e cliccare su `Crea API`.
-7.  Dopo aver creato l'api procediamo a creare una risorsa, cliccare quindi `Crea risorsa`.
-8.  Per la creazione della risorsa lasciamo sia `Risorsa proxy` sia `CORS` in off e scegliamo un nome per la risorsa. (ex: `myResource`)
-9.  Cliccare su `Crea risorsa`.
-10.  Dopo aver creato la risorsa dobbiamo creare un metodo, cliccare quindi su `Crea metodo`.
-11.  In `Tipo di metodo` selezionare `ANY`
-12.  Scegliere `Funzione Lambda`.
-13.  Selezionare `Integrazione proxy lambda`.
-14.  Su `Funzione Lambda` scegliere la funzione creata in precedenza.
-15.  Lasciare il resto nelle impostazioni di default e cliccare `Crea metodo`.
-16.  Creato il metodo procedere cliccando `Implementa API`.
-17.  In `Fase` selezionare `Nuova fase`, scegliere un nome per la fase e cliccare `Distribuire`. Dopo aver implementato l'api possiamo vedere l'url dell'endpoint in `Dettaglio fase` --> `Richiama URL`.
+1.  Entrare nella console di AWS API Gateway, cliccare su `Crea API`. 
+1.  Scegliere `API REST` e cliccare `Crea`. 
+1.  Su `Dettagli API` scegliere `Nuova API`. 
+1.  Scegliere un nome per l'API. (ex: `MyApi`)
+1.  Lasciare il tipo di endpoint in `Regionale` e cliccare su `Crea API`.  
+1.  Dopo aver creato l'api procediamo a creare una risorsa, cliccare quindi `Crea risorsa`. 
+1.  Per la creazione della risorsa lasciamo sia `Risorsa proxy` sia `CORS` in off e scegliamo un nome per la risorsa. (ex: `resource1`)  
+1.  Cliccare su `Crea risorsa`. 
+1.  Dopo aver creato la risorsa dobbiamo creare un metodo, cliccare quindi su `Crea metodo`. 
+1.  In `Tipo di metodo` selezionare `ANY`
+1.  Scegliere `Funzione Lambda`. 
+1.  Selezionare `Integrazione proxy lambda`. 
+1.  Su `Funzione Lambda` scegliere la prima funzione creata in precedenza. 
+1. Lasciare il resto nelle impostazioni di default e cliccare `Crea metodo`. 
+1. Creare una seconda risorsa per la seconda funzione ripetendo i passi da 10 a 15, questa volta su `Funzione lambda` scegliamo la seconda creata
+1. Creato il metodo procedere cliccando `Implementa API`. 
+1. In `Fase` selezionare `Nuova fase`, scegliere un nome per la fase e cliccare `Distribuire`. 
+Dopo aver implementato l'api possiamo vedere l'url dell'endpoint in `Dettaglio fase` --> `Richiama URL`. 
 
 Ora dobbiamo creare un oggetto S3 per salvare i logs.
 
