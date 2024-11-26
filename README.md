@@ -27,7 +27,8 @@ Per poter replicare il progetto consigliamo per prima cosa di scaricare il file 
  2. Scaricare il [driver](https://www.silabs.com/developer-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads) per la porta seriale 
  3. Installare la libreria ArduinoJson di Benoit Blanchon dal Gestore Librerie di Arduino IDE
  4. Nelle preferenze di Arduino IDE, aggiungere l'url aggiuntivo per il Gestore schede
- 5. Creare uno sketch e incollare il codice contenuto nel file AGV_controller.ino contenuto nella cartella scaricata  
+    - https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+ 6. Creare uno sketch e incollare il codice contenuto nel file AGV_controller.ino contenuto nella cartella scaricata  
 Nota: nel codice vanno inseriti di propria mano alcuni dati come SSID e password della connessione wifi, indirizzo url delle due funzioni Lambda
 ```
   const char* ssid = "";  
